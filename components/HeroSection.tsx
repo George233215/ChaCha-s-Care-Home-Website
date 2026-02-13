@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { Home } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { urlFor } from '@/lib/sanity'
 
@@ -99,7 +100,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
 
   return (
     <section
-      className="relative min-h-screen pt-20 flex items-center overflow-hidden bg-cover bg-center transition-all duration-1000"
+      className="relative min-h-[75vh] md:min-h-[85vh] pt-10 md:pt-16 flex items-center overflow-hidden bg-cover bg-center transition-all duration-1000"
       style={{ backgroundImage: `url('${backgroundImageUrl}')` }}
     >
       {/* Dark overlay so text remains readable over the photo */}
@@ -125,10 +126,13 @@ export default function HeroSection({ data }: HeroSectionProps) {
                 {headings[headingIndex]}
               </h1>
             </div>
-            <p className="text-lg md:text-xl text-white/95 mb-8 leading-relaxed text-balance animation-delay-100 drop-shadow">
+            <p
+              className="text-lg md:text-xl text-white/95 mb-8 leading-relaxed text-balance drop-shadow"
+              style={{ animationDelay: '100ms' }}
+            >
               {heroData.subtitle}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animation-delay-200">
+            <div className="flex flex-col sm:flex-row gap-4" style={{ animationDelay: '200ms' }}>
               <Button asChild size="lg" className="transition-smooth bg-white text-primary">
                 <Link href={heroData.ctaLink}>{heroData.ctaText}</Link>
               </Button>
@@ -160,7 +164,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
           </div>
 
           {/* Right Column - Hero Carousel Images */}
-          <div className="relative h-[320px] sm:h-[420px] md:h-[500px] rounded-2xl overflow-hidden border border-white/20 shadow-2xl animate-slide-in-right">
+          <div className="relative w-full aspect-[4/5] max-h-[500px] rounded-2xl overflow-hidden border border-white/20 shadow-2xl animate-slide-in-right">
             {currentRightImage?.image ? (
               <Image
                 key={currentImageIndex}
@@ -173,6 +177,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-white/20 via-primary/20 to-primary/30 backdrop-blur flex items-center justify-center text-primary-foreground border border-primary/30">
                 <div className="text-center">
+                  <Home className="mx-auto mb-3 h-12 w-12" />
                   <p className="text-xl drop-shadow-lg">Professional Care Home Image</p>
                 </div>
               </div>

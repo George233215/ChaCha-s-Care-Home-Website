@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
-import { CheckCircle } from 'lucide-react'
+import { CheckCircle, Home } from 'lucide-react'
 import { urlFor } from '@/lib/sanity'
 
 interface HighlightItem {
@@ -30,16 +30,16 @@ export default function HighlightSection({
   const textRef = useScrollReveal({ threshold: 0.2, margin: '0px 0px -100px 0px' })
   const imageRef = useScrollReveal({ threshold: 0.2, margin: '0px 0px -100px 0px' })
 
-  // Determine image container height based on orientation
-  const getImageHeight = () => {
+  // Determine image container ratio based on orientation
+  const getImageLayout = () => {
     switch (imageOrientation) {
       case 'landscape':
-        return 'h-[350px]'
+        return 'aspect-[16/10] max-h-[380px]'
       case 'square':
-        return 'h-[450px]'
+        return 'aspect-square max-h-[450px]'
       case 'portrait':
       default:
-        return 'h-[320px] sm:h-[420px] md:h-[550px]'
+        return 'aspect-[4/5] max-h-[550px]'
     }
   }
 
@@ -52,7 +52,7 @@ export default function HighlightSection({
           {/* Image Section */}
           <div
             ref={imageRef}
-            className={`scroll-reveal-scale relative ${getImageHeight()} rounded-2xl overflow-hidden shadow-2xl group ${imagePosition === 'left' ? 'md:order-1' : 'md:order-2'}`}
+            className={`scroll-reveal-scale relative w-full ${getImageLayout()} rounded-2xl overflow-hidden shadow-2xl group ${imagePosition === 'left' ? 'md:order-1' : 'md:order-2'}`}
           >
             {image ? (
               <Image
@@ -66,7 +66,7 @@ export default function HighlightSection({
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-primary/20 to-primary/30" />
                 <div className="w-full h-full bg-gradient-to-br from-primary/20 via-primary/15 to-primary/25 flex items-center justify-center text-center p-6 border border-primary/30">
                   <div>
-                    <div className="text-7xl mb-4">🏡</div>
+                    <Home className="mx-auto h-16 w-16 mb-4 text-white" />
                     <p className="text-white text-lg font-semibold drop-shadow-lg">Comfortable Home-Style Living</p>
                   </div>
                 </div>

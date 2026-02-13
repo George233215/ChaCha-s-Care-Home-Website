@@ -16,6 +16,7 @@ import MapSection from '@/components/MapSection'
 export default function ContactPage() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -37,6 +38,7 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
+    setErrorMessage('')
 
     try {
       const response = await fetch('/api/contact', {
@@ -46,6 +48,8 @@ export default function ContactPage() {
         },
         body: JSON.stringify(formData),
       })
+
+      const payload = await response.json().catch(() => ({}))
 
       if (response.ok) {
         setSuccess(true)
@@ -59,9 +63,12 @@ export default function ContactPage() {
           interestedIn: 'general',
         })
         setTimeout(() => setSuccess(false), 5000)
+      } else {
+        setErrorMessage(payload?.error || 'We could not send your message. Please try again.')
       }
     } catch (error) {
       console.error('Error submitting form:', error)
+      setErrorMessage('Network error. Please check your connection and try again.')
     } finally {
       setLoading(false)
     }
@@ -148,6 +155,11 @@ export default function ContactPage() {
                 {success && (
                   <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                     <p className="text-green-800">Thank you! We'll be in touch soon.</p>
+                  </div>
+                )}
+                {errorMessage && (
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-red-800">{errorMessage}</p>
                   </div>
                 )}
 

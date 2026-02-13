@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, CheckCircle2, HeartHandshake, Pill, Utensils, Car, Activity, HandHeart } from 'lucide-react'
 
 interface Service {
   _id: string
@@ -21,8 +21,8 @@ interface ServicesGridProps {
 }
 
 export default function ServicesGrid({ services }: ServicesGridProps) {
-  // Service icons mapping (you can customize these)
-  const serviceIcons = ['🏥', '💊', '🍽️', '🚗', '🏃', '🧘']
+  // Service icons mapping
+  const serviceIcons = [HeartHandshake, Pill, Utensils, Car, Activity, HandHeart]
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
@@ -46,8 +46,11 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
             {/* Content */}
             <div className="relative z-10">
               {/* Icon container - Enhanced */}
-              <div className="mb-5 w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center text-4xl group-hover:scale-105 transition-all duration-300 border-2 border-primary/30 group-hover:border-primary/60 group-hover:shadow-md group-hover:bg-primary/25">
-                {serviceIcons[index % serviceIcons.length]}
+              <div className="mb-5 w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center group-hover:scale-[1.02] transition-all duration-300 border-2 border-primary/30 group-hover:border-primary/60 group-hover:shadow-md group-hover:bg-primary/25">
+                {(() => {
+                  const Icon = serviceIcons[index % serviceIcons.length]
+                  return <Icon className="h-9 w-9 text-primary" aria-hidden="true" />
+                })()}
               </div>
 
               {/* Title with accent underline */}

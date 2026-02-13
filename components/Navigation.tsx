@@ -23,10 +23,10 @@ export function Navigation() {
   return (
     <nav className="sticky top-0 z-50 bg-gradient-to-r from-primary to-primary/90 shadow-lg border-0 backdrop-blur supports-[backdrop-filter]:bg-primary/95">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 group" aria-label="Go to homepage">
-            <Image src="/chachas logo.png" alt="Cha Cha's Care Home" width={160} height={65} className="h-16 w-auto" priority />
+            <Image src="/chachas logo.png" alt="Cha Cha's Care Home" width={160} height={65} className="h-14 w-auto" priority />
           </Link>
 
           {/* Desktop Navigation */}

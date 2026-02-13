@@ -44,10 +44,11 @@ export default async function ServicesPage() {
           {services && services.length > 0 ? (
             <ServicesGrid services={services} />
           ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground mb-4">No services available yet.</p>
+            <div className="text-center py-12 border border-primary/10 bg-white rounded-2xl shadow-sm max-w-2xl mx-auto px-6">
+              <p className="text-foreground font-semibold mb-2">Services are being updated.</p>
+              <p className="text-muted-foreground mb-4">Please contact us for current availability and care options.</p>
               <Button asChild>
-                <Link href="/">Back to Home</Link>
+                <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
           )}

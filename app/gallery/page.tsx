@@ -72,7 +72,7 @@ export default async function GalleryPage() {
                           return (
                             <Card
                               key={idx}
-                              className="overflow-hidden h-64 bg-secondary hover:shadow-lg transition-smooth-slow hover:scale-105 cursor-pointer animate-scale-in relative group"
+                              className="overflow-hidden h-64 bg-secondary hover:shadow-lg transition-smooth-slow hover:scale-[1.01] cursor-pointer animate-scale-in relative group"
                             >
                               {imageUrl ? (
                                 <>
@@ -105,8 +105,9 @@ export default async function GalleryPage() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">Gallery images coming soon.</p>
+            <div className="text-center py-12 border border-primary/10 bg-white rounded-2xl shadow-sm max-w-2xl mx-auto px-6">
+              <p className="text-foreground font-semibold mb-2">New photos are being added.</p>
+              <p className="text-muted-foreground">Contact us to schedule a visit and see the home in person.</p>
             </div>
           )}
         </div>

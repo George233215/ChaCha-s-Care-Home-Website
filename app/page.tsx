@@ -5,6 +5,7 @@ import { TopBar } from '@/components/TopBar'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
+import { Home as HomeIcon } from 'lucide-react'
 import HeroSection from '@/components/HeroSection'
 import FeaturesSection from '@/components/FeaturesSection'
 import ServicesGrid from '@/components/ServicesGrid'
@@ -50,7 +51,7 @@ export default async function Home() {
                   <Link href="/services">Explore Our Services</Link>
                 </Button>
               </div>
-              <div className="relative h-[450px] bg-gradient-to-br from-secondary to-primary/10 rounded-2xl overflow-hidden animate-slide-in-right group hover:shadow-2xl transition-all duration-500">
+              <div className="relative w-full aspect-[4/3] max-h-[460px] bg-gradient-to-br from-secondary to-primary/10 rounded-2xl overflow-hidden animate-slide-in-right group hover:shadow-xl transition-all duration-500">
                 {homeData.introduction?.image ? (
                   <Image
                     src={urlFor(homeData.introduction.image).url()}
@@ -61,7 +62,7 @@ export default async function Home() {
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-muted-foreground/50 group-hover:text-muted-foreground/70 transition-colors">
                     <div className="text-center">
-                      <div className="text-6xl mb-2">🏡</div>
+                      <HomeIcon className="mx-auto h-14 w-14 mb-2" />
                       <p className="text-lg">Care Home Image</p>
                     </div>
                   </div>
