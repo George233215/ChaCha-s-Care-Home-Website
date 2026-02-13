@@ -1,7 +1,18 @@
 import Link from 'next/link'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, CheckCircle2, HeartHandshake, Pill, Utensils, Car, Activity, HandHeart } from 'lucide-react'
+import {
+  ArrowRight,
+  CheckCircle2,
+  HeartHandshake,
+  Pill,
+  Utensils,
+  Car,
+  Activity,
+  HandHeart,
+  Shirt,
+  ShieldCheck,
+} from 'lucide-react'
 
 interface Service {
   _id: string
@@ -23,6 +34,19 @@ interface ServicesGridProps {
 export default function ServicesGrid({ services }: ServicesGridProps) {
   // Service icons mapping
   const serviceIcons = [HeartHandshake, Pill, Utensils, Car, Activity, HandHeart]
+  const getServiceIcon = (title: string, index: number) => {
+    const normalized = title.toLowerCase()
+
+    if (normalized.includes('transport')) return Car
+    if (normalized.includes('housekeeping') || normalized.includes('laundry') || normalized.includes('clean')) return Shirt
+    if (normalized.includes('medication') || normalized.includes('medicine') || normalized.includes('pill')) return Pill
+    if (normalized.includes('meal') || normalized.includes('dining') || normalized.includes('nutrition') || normalized.includes('food')) return Utensils
+    if (normalized.includes('supervision') || normalized.includes('safety') || normalized.includes('monitor')) return ShieldCheck
+    if (normalized.includes('activity') || normalized.includes('recreation') || normalized.includes('exercise')) return Activity
+    if (normalized.includes('care') || normalized.includes('assistance') || normalized.includes('support') || normalized.includes('companion')) return HeartHandshake
+
+    return serviceIcons[index % serviceIcons.length]
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
@@ -48,7 +72,7 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
               {/* Icon container - Enhanced */}
               <div className="mb-5 w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center group-hover:scale-[1.02] transition-all duration-300 border-2 border-primary/30 group-hover:border-primary/60 group-hover:shadow-md group-hover:bg-primary/25">
                 {(() => {
-                  const Icon = serviceIcons[index % serviceIcons.length]
+                  const Icon = getServiceIcon(service.title, index)
                   return <Icon className="h-9 w-9 text-primary" aria-hidden="true" />
                 })()}
               </div>
