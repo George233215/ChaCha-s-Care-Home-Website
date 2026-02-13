@@ -3,11 +3,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
 
   const links = [
     { href: '/', label: 'Home' },
@@ -19,7 +21,7 @@ export function Navigation() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 bg-gradient-to-r from-primary to-primary/90 shadow-lg border-0">
+    <nav className="sticky top-0 z-50 bg-gradient-to-r from-primary to-primary/90 shadow-lg border-0 backdrop-blur supports-[backdrop-filter]:bg-primary/95">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
@@ -33,18 +35,29 @@ export function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white hover:text-white/80 transition-smooth text-base font-medium relative group"
+                className={`transition-smooth text-base font-medium relative group ${
+                  pathname === link.href ? 'text-white' : 'text-white/90 hover:text-white'
+                }`}
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-300 ${
+                    pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
               </Link>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild className="bg-white text-primary hover:bg-gray-50 transition-smooth px-8 py-2 text-base font-semibold">
-              <Link href="/contact">Inquiry Now</Link>
+            <Button
+              asChild
+              className="px-8 py-2 text-base font-semibold rounded-lg bg-white text-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-transform transform"
+            >
+              <Link href="/contact">
+                <span className="relative z-10">Inquiry Now</span>
+              </Link>
             </Button>
           </div>
 
@@ -61,19 +74,26 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4 space-y-2 bg-primary/50 backdrop-blur -mx-4 -mr-4 px-4 py-4 rounded-b-lg">
+          <div className="md:hidden pb-4 space-y-2 bg-primary/50 backdrop-blur -mx-4 px-4 py-4 rounded-b-lg animate-fade-in">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-3 py-2 text-white hover:bg-white/20 rounded-md transition-smooth"
+                className={`block px-3 py-2 rounded-md transition-smooth ${
+                  pathname === link.href ? 'bg-white/20 text-white' : 'text-white hover:bg-white/20'
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <Button asChild className="w-full bg-white text-primary hover:bg-gray-50 transition-smooth">
-              <Link href="/contact">Inquiry Now</Link>
+            <Button
+              asChild
+              className="w-full rounded-lg bg-white text-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-transform transform"
+            >
+              <Link href="/contact">
+                <span className="relative z-10">Inquiry Now</span>
+              </Link>
             </Button>
           </div>
         )}

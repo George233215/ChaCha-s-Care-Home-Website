@@ -17,12 +17,12 @@ function CommitmentItem({ icon, title, description }: CommitmentItemProps) {
   return (
     <div
       ref={ref}
-      className="scroll-reveal-scale p-8 rounded-xl border border-blue-200 bg-white hover:border-accent hover:shadow-lg transition-smooth-slow group hover:-translate-y-1"
+      className="scroll-reveal-scale p-6 md:p-7 rounded-xl border border-blue-200 bg-white hover:border-accent hover:shadow-lg transition-smooth-slow group hover:-translate-y-1 hover:scale-[1.01]"
     >
       <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4 group-hover:from-accent/40 group-hover:to-accent/20 transition-smooth">
         <div className="text-primary group-hover:text-accent transition-smooth">{icon}</div>
       </div>
-      <h3 className="text-xl font-bold text-primary mb-3">{title}</h3>
+      <h3 className="text-xl font-bold text-primary mb-2">{title}</h3>
       <p className="text-foreground/70 leading-relaxed">{description}</p>
     </div>
   )
@@ -55,15 +55,15 @@ export default function CommitmentSection() {
   ]
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-primary/5 to-background">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div ref={titleRef} className="scroll-reveal-up text-center mb-16">
+        <div ref={titleRef} className="scroll-reveal-up text-center mb-12">
           <p className="text-primary font-bold text-sm uppercase tracking-widest mb-3 flex items-center justify-center gap-2">
             <span className="w-1 h-5 bg-accent rounded-full" />
             Our Commitment
             <span className="w-1 h-5 bg-accent rounded-full" />
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4 text-balance">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-5 text-balance leading-tight">
             Excellence in Every Aspect of Care
           </h2>
           <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">

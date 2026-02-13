@@ -23,30 +23,36 @@ export default async function GalleryPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="py-16 md:py-20 bg-primary/5 border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in-up">Gallery</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl animate-slide-in-left">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-primary/10 to-primary/5 border-b border-border relative overflow-hidden">
+        <div className="absolute top-8 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-white border border-primary/20 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-accent" />
+            <span className="text-sm font-semibold text-primary">Life At Cha Cha's</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-5 animate-fade-in-up">Gallery</h1>
+          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed animate-slide-in-left">
             Take a visual tour of Cha Cha's Care Home, including our comfortable living spaces, dining areas, common rooms, and the activities our residents enjoy.
           </p>
         </div>
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-secondary/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {galleries && galleries.length > 0 ? (
-            <div className="space-y-16">
+            <div className="space-y-12">
               {galleries.map((gallery) => (
-                <div key={gallery._id} className="animate-fade-in-up">
-                  <h2 className="text-2xl font-bold text-foreground mb-2">{gallery.title}</h2>
-                  {gallery.description && (
-                    <p className="text-muted-foreground mb-8">{gallery.description}</p>
-                  )}
+                <div key={gallery._id} className="animate-fade-in-up bg-white rounded-2xl border border-primary/10 p-6 md:p-8 shadow-sm">
+                  <h2 className="text-2xl font-bold text-foreground mb-3 leading-tight">{gallery.title}</h2>
+                  {gallery.description && <p className="text-muted-foreground mb-6 leading-relaxed">{gallery.description}</p>}
+                  <div className="mb-8">
+                    <div className="h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
+                  </div>
 
                   {/* Carousel Section */}
                   {gallery.images && gallery.images.length > 0 && (
-                    <div className="mb-12">
+                    <div className="mb-10">
                       <ImageCarousel
                         images={gallery.images}
                         autoSlide={true}
@@ -58,7 +64,7 @@ export default async function GalleryPage() {
 
                   {/* Grid View */}
                   <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-6">All Photos</h3>
+                    <h3 className="text-lg font-semibold text-foreground mb-5">All Photos</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
                       {gallery.images && gallery.images.length > 0 ? (
                         gallery.images.map((item, idx) => {

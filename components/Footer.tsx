@@ -101,21 +101,10 @@ export function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-white/10 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center justify-center">
             <p className="text-sm text-gray-400">
               &copy; {currentYear} Cha Cha's Care Home. All rights reserved.
             </p>
-            <div className="flex gap-6">
-              <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-                Accessibility
-              </Link>
-            </div>
           </div>
         </div>
 

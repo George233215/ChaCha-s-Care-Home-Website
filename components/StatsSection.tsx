@@ -16,7 +16,7 @@ function StatItem({ number, label, description }: StatItemProps) {
       ref={ref}
       className="scroll-reveal-scale text-center group hover:transform transition-smooth-slow"
     >
-      <div className="relative mb-4 group-hover:scale-110 transition-smooth">
+      <div className="relative mb-4 group-hover:scale-105 transition-smooth">
         <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-white/90 to-white bg-clip-text text-transparent drop-shadow-lg">
           {number}
         </div>
@@ -31,14 +31,14 @@ export default function StatsSection() {
   const titleRef = useScrollReveal({ threshold: 0.2, margin: '0px 0px -100px 0px' })
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-r from-primary via-primary/85 to-primary/90 text-white overflow-hidden relative">
+    <section className="py-16 md:py-24 bg-gradient-to-r from-primary via-primary/85 to-primary/90 text-white overflow-hidden relative">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse-slow" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <div ref={titleRef} className="scroll-reveal-up text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance text-white drop-shadow-lg">
+        <div ref={titleRef} className="scroll-reveal-up text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-5 text-balance text-white drop-shadow-lg leading-tight">
             Trusted by Richmond-Area Families
           </h2>
           <p className="text-lg text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow">
@@ -46,7 +46,7 @@ export default function StatsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <StatItem number="25+" label="Years of Experience" description="Serving seniors with excellence" />
           <StatItem
             number="500+"

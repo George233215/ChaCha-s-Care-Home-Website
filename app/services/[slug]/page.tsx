@@ -71,16 +71,17 @@ export default async function ServicePage({ params }: Props) {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="py-16 md:py-20 bg-primary/5 border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-primary/10 to-primary/5 border-b border-border relative overflow-hidden">
+        <div className="absolute top-8 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <Button asChild variant="ghost" className="mb-4 -ml-3">
             <Link href="/services">← Back to Services</Link>
           </Button>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in-up">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-5 animate-fade-in-up">
             {service.title}
           </h1>
           {service.description && (
-            <p className="text-lg text-muted-foreground max-w-2xl animate-slide-in-left">
+            <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed animate-slide-in-left">
               {service.description}
             </p>
           )}
@@ -88,11 +89,11 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* Service Detail */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-secondary/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start mb-12">
             {/* Image */}
-            <div className="relative h-96 md:h-full min-h-96 rounded-2xl overflow-hidden shadow-2xl group hover:shadow-3xl transition-all duration-300">
+            <div className="relative h-96 md:h-full min-h-96 rounded-2xl overflow-hidden shadow-xl group hover:shadow-2xl transition-all duration-300 border border-primary/10">
               {service.image ? (
                 <Image
                   src={urlFor(service.image).url()}
@@ -111,7 +112,7 @@ export default async function ServicePage({ params }: Props) {
             </div>
 
             {/* Content */}
-            <div>
+            <div className="bg-white border border-primary/10 rounded-2xl p-6 md:p-8 shadow-sm">
               <h2 className="text-3xl font-bold text-foreground mb-6">About This Service</h2>
               
               {service.fullDescription && service.fullDescription.length > 0 ? (
@@ -126,7 +127,7 @@ export default async function ServicePage({ params }: Props) {
 
               {/* Features */}
               {service.features && service.features.length > 0 && (
-                <div className="bg-primary/5 rounded-xl p-6 border border-primary/10">
+                <div className="bg-primary/5 rounded-xl p-6 border border-primary/15">
                   <h3 className="text-xl font-bold text-foreground mb-4">Key Features</h3>
                   <ul className="space-y-3">
                     {service.features.map((feature: any, idx: number) => (
@@ -147,23 +148,23 @@ export default async function ServicePage({ params }: Props) {
           </div>
 
           {/* CTA */}
-          <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-8 md:p-12 text-center border border-primary/20">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+          <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-8 md:p-10 text-center border border-primary/20 shadow-sm">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-5 leading-tight">
               Interested in This Service?
             </h3>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
               Contact Cha Cha's Care Home today to learn more about how this service can support your loved one. Our compassionate team is ready to help.
             </p>
-            <Button asChild size="lg" className="transition-smooth hover:scale-105">
+            <Button asChild size="lg" className="transition-smooth">
               <Link href="/contact">Get in Touch</Link>
             </Button>
           </div>
 
           {/* Other Services */}
-          <div className="mt-16 pt-12 border-t border-border">
+          <div className="mt-12 pt-10 border-t border-border">
             <h3 className="text-2xl font-bold text-foreground mb-8">Our Other Services</h3>
             <div className="flex justify-center items-center">
-              <Button asChild size="lg" className="transition-all hover:scale-105 hover:shadow-lg bg-primary text-white hover:bg-primary/90">
+              <Button asChild size="lg" className="transition-all bg-primary text-white">
                 <Link href="/services">View All Services</Link>
               </Button>
             </div>

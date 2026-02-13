@@ -1,10 +1,12 @@
 import { createClient } from 'next-sanity'
-import imageUrlBuilder from '@sanity/image-url'
+import { createImageUrlBuilder } from '@sanity/image-url'
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 const apiVersion = '2024-01-01'
+const rawWriteToken = process.env.SANITY_API_WRITE_TOKEN || process.env.SANITY_API_TOKEN
+const writeToken = rawWriteToken?.trim().replace(/^['"]|['"]$/g, '')
 
 export const client = createClient({
   projectId,
@@ -13,7 +15,15 @@ export const client = createClient({
   useCdn: true,
 })
 
-const builder = imageUrlBuilder(client)
+const writeClient = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: false,
+  token: writeToken,
+})
+
+const builder = createImageUrlBuilder(client)
 
 export function urlFor(source: SanityImageSource) {
   return builder.image(source)
@@ -83,9 +93,17 @@ export async function submitContact(data: {
   message: string
   interestedIn: string
 }) {
-  return client.create({
+  if (!writeToken) {
+    throw new Error('Missing SANITY_API_WRITE_TOKEN (or SANITY_API_TOKEN)')
+  }
+  if (writeToken.length < 20) {
+    throw new Error('Invalid Sanity API token format. Use a full write token from manage.sanity.io')
+  }
+
+  return writeClient.create({
     _type: 'contact',
     ...data,
     submittedAt: new Date().toISOString(),
+    status: 'new',
   })
 }

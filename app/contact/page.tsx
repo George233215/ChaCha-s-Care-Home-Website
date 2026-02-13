@@ -73,26 +73,34 @@ export default function ContactPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="py-16 md:py-20 bg-primary/5 border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in-up">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-primary/10 to-primary/5 border-b border-border relative overflow-hidden">
+        <div className="absolute top-8 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-white border border-primary/20 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-accent" />
+            <span className="text-sm font-semibold text-primary">We're Here to Help</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-5 animate-fade-in-up">
             Get in Touch
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl animate-slide-in-left">
+          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed animate-slide-in-left">
             Contact Cha Cha's Care Home in Mechanicsville, VA to learn more about our services, ask questions, or schedule a visit. We're here to help!
           </p>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-secondary/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10">
+            <div className="h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Info */}
             <div className="lg:col-span-1">
-              <div className="space-y-8">
-                <Card className="p-6 shadow-md hover:shadow-xl transition-all duration-300 animate-scale-in border border-gray-200/60 bg-white rounded-lg">
-                  <div className="flex gap-4 mb-4">
+              <div className="space-y-6">
+                <Card className="p-6 shadow-md hover:shadow-xl transition-all duration-300 animate-scale-in border border-primary/15 bg-white rounded-xl">
+                  <div className="flex gap-4">
                     <Phone className="text-accent flex-shrink-0" size={24} />
                     <div>
                       <h3 className="font-bold text-foreground mb-1">Phone</h3>
@@ -103,8 +111,8 @@ export default function ContactPage() {
                   </div>
                 </Card>
 
-                <Card className="p-6 shadow-md hover:shadow-xl transition-all duration-300 animate-scale-in border border-gray-200/60 bg-white rounded-lg">
-                  <div className="flex gap-4 mb-4">
+                <Card className="p-6 shadow-md hover:shadow-xl transition-all duration-300 animate-scale-in border border-primary/15 bg-white rounded-xl">
+                  <div className="flex gap-4">
                     <Mail className="text-accent flex-shrink-0" size={24} />
                     <div>
                       <h3 className="font-bold text-foreground mb-1">Email</h3>
@@ -115,8 +123,8 @@ export default function ContactPage() {
                   </div>
                 </Card>
 
-                <Card className="p-6 shadow-md hover:shadow-xl transition-all duration-300 animate-scale-in border border-gray-200/60 bg-white rounded-lg\">
-                  <div className="flex gap-4 mb-4">
+                <Card className="p-6 shadow-md hover:shadow-xl transition-all duration-300 animate-scale-in border border-primary/15 bg-white rounded-xl">
+                  <div className="flex gap-4">
                     <MapPin className="text-accent flex-shrink-0" size={24} />
                     <div>
                       <h3 className="font-bold text-foreground mb-1">Location</h3>
@@ -126,7 +134,7 @@ export default function ContactPage() {
                   </div>
                 </Card>
 
-                <Card className="p-6 bg-primary text-primary-foreground shadow-md hover:shadow-xl transition-all duration-300 animate-scale-in border border-primary/40 rounded-lg">
+                <Card className="p-6 bg-primary text-primary-foreground shadow-md hover:shadow-xl transition-all duration-300 animate-scale-in border border-primary/40 rounded-xl">
                   <h3 className="font-bold mb-3">Available</h3>
                   <p className="text-sm opacity-90 mb-2">24/7 Care & Support</p>
                   <p className="text-xs opacity-75">Always available for emergencies and inquiries</p>
@@ -136,7 +144,7 @@ export default function ContactPage() {
 
             {/* Form */}
             <div className="lg:col-span-2">
-              <Card className="p-8 shadow-lg border border-gray-200/60 bg-white rounded-xl overflow-hidden">
+              <Card className="p-6 md:p-8 shadow-lg border border-primary/15 bg-white rounded-2xl overflow-hidden">
                 {success && (
                   <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                     <p className="text-green-800">Thank you! We'll be in touch soon.</p>
@@ -153,7 +161,7 @@ export default function ContactPage() {
                         value={formData.firstName}
                         onChange={handleChange}
                         required
-                        placeholder="John"
+                        placeholder="Michael"
                       />
                     </div>
                     <div>
@@ -164,7 +172,7 @@ export default function ContactPage() {
                         value={formData.lastName}
                         onChange={handleChange}
                         required
-                        placeholder="Doe"
+                        placeholder="Anderson"
                       />
                     </div>
                   </div>
@@ -178,7 +186,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder="john@example.com"
+                        placeholder="michael.anderson@email.com"
                       />
                     </div>
                     <div>
@@ -188,7 +196,7 @@ export default function ContactPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="(123) 456-7890"
+                        placeholder="804-555-0147"
                       />
                     </div>
                   </div>
@@ -202,7 +210,7 @@ export default function ContactPage() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        placeholder="Inquiry about services"
+                        placeholder="Service Consultation Request"
                       />
                     </div>
                     <div>
@@ -211,7 +219,7 @@ export default function ContactPage() {
                         name="interestedIn"
                         value={formData.interestedIn}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                        className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                       >
                         <option value="general">General Inquiry</option>
                         <option value="resident">Resident Inquiry</option>
@@ -229,7 +237,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      placeholder="Tell us how we can help..."
+                      placeholder="Please share your care needs, preferred timeline, and best contact method."
                       rows={6}
                     />
                   </div>

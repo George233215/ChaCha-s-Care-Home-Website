@@ -21,7 +21,7 @@ function FeatureCard({ feature }: { feature: Feature }) {
   return (
     <div ref={ref} className="scroll-reveal-scale">
       <Card
-        className={`p-6 hover:shadow-lg transition-smooth-slow hover:scale-105 hover:-translate-y-1 cursor-pointer h-full ${
+        className={`group p-6 hover:shadow-lg transition-smooth-slow hover:scale-[1.02] hover:-translate-y-1 cursor-pointer h-full ${
           feature.highlighted ? 'border-accent border-2' : ''
         }`}
       >
@@ -31,7 +31,7 @@ function FeatureCard({ feature }: { feature: Feature }) {
           </div>
         </div>
         <h3 className="text-xl font-bold text-foreground mb-2">{feature.title}</h3>
-        <p className="text-muted-foreground">{feature.description}</p>
+        <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
       </Card>
     </div>
   )
@@ -44,8 +44,8 @@ export default function FeaturesSection({ features }: FeaturesSectionProps) {
     <section className="py-16 md:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div ref={titleRef} className="scroll-reveal-up text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Why Choose Us</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-5 leading-tight">Why Choose Us</h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
             Our comprehensive approach to senior care ensures comfort, safety, and dignity
           </p>
         </div>

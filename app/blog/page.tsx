@@ -75,7 +75,7 @@ export default async function BlogPage() {
                       )}
                     </div>
 
-                    <Button asChild variant="ghost" className="self-start -ml-3 hover:translate-x-1 transition-smooth">
+                    <Button asChild variant="ghost" className="self-start -ml-3 transition-smooth">
                       <Link href={`/blog/${post.slug.current}`}>
                         Read More
                         <ArrowRight className="ml-2 h-4 w-4 transition-smooth" />

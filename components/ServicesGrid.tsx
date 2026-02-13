@@ -25,17 +25,17 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
   const serviceIcons = ['🏥', '💊', '🍽️', '🚗', '🏃', '🧘']
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
       {services.map((service, index) => (
         <div
           key={service._id}
           className="group relative flex flex-col h-full animate-scale-in"
         >
           {/* Card with elevated shadow */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-primary/20 to-primary/10 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500 -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/15 to-primary/5 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500 -z-10" />
           
           <Card
-            className="relative p-8 flex flex-col h-full bg-white shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer border border-primary/15 overflow-hidden rounded-2xl"
+            className="relative p-6 md:p-7 flex flex-col h-full bg-white shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 cursor-pointer border border-primary/15 overflow-hidden rounded-2xl"
           >
             {/* Top accent bar */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/80 to-primary/60" />
@@ -46,26 +46,26 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
             {/* Content */}
             <div className="relative z-10">
               {/* Icon container - Enhanced */}
-              <div className="mb-6 w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center text-4xl group-hover:scale-125 group-hover:rotate-6 transition-all duration-300 border-2 border-primary/30 group-hover:border-primary/60 group-hover:shadow-xl group-hover:bg-primary/30">
+              <div className="mb-5 w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center text-4xl group-hover:scale-105 transition-all duration-300 border-2 border-primary/30 group-hover:border-primary/60 group-hover:shadow-md group-hover:bg-primary/25">
                 {serviceIcons[index % serviceIcons.length]}
               </div>
 
               {/* Title with accent underline */}
               <div className="mb-4">
-                <h3 className="text-2xl font-bold text-primary mb-2 group-hover:text-primary/90 transition-colors duration-300">
+                <h3 className="text-xl font-bold leading-tight text-primary mb-2 group-hover:text-primary/90 transition-colors duration-300">
                   {service.title}
                 </h3>
                 <div className="h-1 w-12 bg-gradient-to-r from-primary to-primary/60 rounded-full" />
               </div>
 
               {/* Description */}
-              <p className="text-foreground/70 mb-6 flex-grow leading-relaxed text-sm">
+              <p className="text-foreground/70 mb-5 flex-grow leading-relaxed text-sm">
                 {service.description}
               </p>
 
               {/* Features List - Modern design */}
               {service.features && service.features.length > 0 && (
-                <div className="mb-6 space-y-2 bg-primary/5 rounded-xl p-4 border border-primary/10">
+                <div className="mb-5 space-y-2 bg-primary/5 rounded-xl p-4 border border-primary/10">
                   {service.features.slice(0, 3).map((feature, idx) => (
                     <div 
                       key={idx} 
@@ -82,8 +82,7 @@ export default function ServicesGrid({ services }: ServicesGridProps) {
               {/* Learn More Button - Modern style */}
               <Button
                 asChild
-                variant="outline"
-                className="mt-auto border-2 border-primary text-primary hover:bg-primary/5 hover:border-primary hover:shadow-lg transition-all duration-300 rounded-lg font-semibold w-full"
+                className="mt-auto rounded-lg font-semibold w-full bg-primary text-white transition-all duration-300"
               >
                 <Link href={`/services/${service.slug.current}`} className="flex items-center justify-center gap-2">
                   Learn More
