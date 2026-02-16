@@ -19,12 +19,12 @@ export function TopBar() {
           <div className="hidden sm:block h-6 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
 
           <a
-            href="mailto:chachascarehome@gmail.com"
+            href="mailto:Chachacare@gmail.com"
             className="items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors hidden sm:flex"
             aria-label="Email us"
           >
             <Mail size={16} className="text-primary" />
-            <span className="text-xs sm:text-sm">chachascarehome@gmail.com</span>
+            <span className="text-xs sm:text-sm">Chachacare@gmail.com</span>
           </a>
         </div>
 
