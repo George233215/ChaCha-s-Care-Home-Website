@@ -1,12 +1,14 @@
 import type { MetadataRoute } from 'next'
 
+const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://chachacarehome.com').replace(/\/+$/, '')
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://chachacarehome.com/sitemap.xml',
-    host: 'https://chachacarehome.com',
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   }
 }

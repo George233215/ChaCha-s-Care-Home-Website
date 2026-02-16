@@ -6,9 +6,10 @@ import ChatWidget from '@/components/ChatWidget'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://chachacarehome.com').replace(/\/+$/, '')
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://chachacarehome.com'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Cha Cha's Care Home | Assisted Living in Mechanicsville, VA",
     template: "%s | Cha Cha's Care Home",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://chachacarehome.com',
+    url: siteUrl,
     siteName: "Cha Cha's Care Home",
     title: "Cha Cha's Care Home | Assisted Living in Mechanicsville, VA",
     description:

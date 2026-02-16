@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const baseUrl = 'https://chachacarehome.com'
+const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://chachacarehome.com').replace(/\/+$/, '')
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
