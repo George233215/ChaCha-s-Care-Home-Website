@@ -9,7 +9,7 @@ type ChatMessage = {
 }
 
 const MAX_MESSAGES = 12
-const DEFAULT_MODEL = process.env.GEMINI_MODEL || 'gemini-1.5-flash'
+const DEFAULT_MODEL = 'gemini-2.5-flash'
 
 function firstNonEmpty(values: Array<string | undefined>) {
   for (const value of values) {
@@ -85,7 +85,7 @@ function toGeminiContents(messages: ChatMessage[]) {
   }))
 }
 
-function buildGeminiUrl(apiKey: string) {
+function buildGeminiUrl(apiKey: string, model: string) {
   const customUrl = firstNonEmpty([
     process.env.GEMINI_API_URL,
     process.env.GOOGLE_API_URL,
@@ -96,7 +96,14 @@ function buildGeminiUrl(apiKey: string) {
     const joiner = customUrl.includes('?') ? '&' : '?'
     return `${customUrl}${joiner}key=${encodeURIComponent(apiKey)}`
   }
-  return `https://generativelanguage.googleapis.com/v1beta/models/${DEFAULT_MODEL}:generateContent?key=${encodeURIComponent(apiKey)}`
+  return `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`
+}
+
+function getModelCandidates() {
+  const configuredModel = firstNonEmpty([process.env.GEMINI_MODEL])
+  const candidates = [configuredModel, DEFAULT_MODEL, 'gemini-1.5-flash']
+    .filter((model) => model.length > 0)
+  return Array.from(new Set(candidates))
 }
 
 async function getServiceTitles() {
@@ -148,37 +155,51 @@ export async function POST(request: NextRequest) {
     const publicContext = getPublicBusinessContext(serviceTitles)
     const systemPrompt = buildSystemPrompt(publicContext)
 
-    const response = await fetch(buildGeminiUrl(apiKey), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        system_instruction: {
-          parts: [{ text: systemPrompt }],
-        },
-        contents: toGeminiContents(messages),
-        generationConfig: {
-          temperature: 0.3,
-          topP: 0.9,
-          maxOutputTokens: 900,
-        },
-      }),
-    })
+    const modelCandidates = getModelCandidates()
+    let data: any = null
+    let lastError = ''
 
-    if (!response.ok) {
+    for (const model of modelCandidates) {
+      const response = await fetch(buildGeminiUrl(apiKey, model), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          system_instruction: {
+            parts: [{ text: systemPrompt }],
+          },
+          contents: toGeminiContents(messages),
+          generationConfig: {
+            temperature: 0.3,
+            topP: 0.9,
+            maxOutputTokens: 900,
+          },
+        }),
+      })
+
+      if (response.ok) {
+        data = await response.json()
+        break
+      }
+
       const details = await response.text()
+      lastError = `Model ${model} failed (${response.status}): ${details}`
       console.error(`[${requestId}] Gemini API error`, {
+        model,
         status: response.status,
         details,
       })
+    }
+
+    if (!data) {
       return NextResponse.json(
-        { error: `Gemini request failed (${response.status}): ${details}` },
+        {
+          error: `Gemini request failed for all configured models. Tried: ${modelCandidates.join(', ')}. Last error: ${lastError}`,
+        },
         { status: 502 },
       )
     }
-
-    const data = await response.json()
     const rawReply = data?.candidates?.[0]?.content?.parts
       ?.map((part: { text?: string }) => part?.text || '')
       .join('\n')

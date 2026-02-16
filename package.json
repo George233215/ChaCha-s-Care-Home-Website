@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next dev\" \"cd studio && npm run dev\"",
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:studio\"",
+    "dev:web": "node --max-old-space-size=4096 ./node_modules/next/dist/bin/next dev",
+    "dev:studio": "npm --prefix studio run dev",
     "build": "npm --prefix studio ci --no-audit --no-fund && next build",
     "start": "next start",
     "lint": "next lint"

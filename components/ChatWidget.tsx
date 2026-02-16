@@ -17,6 +17,12 @@ const quickPrompts = [
   'Do you provide 24/7 care?',
 ]
 
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error && error.message) return error.message
+  if (typeof error === 'string') return error
+  return 'Assistant temporarily unavailable.'
+}
+
 function renderFormattedAssistantText(text: string) {
   const lines = text.split('\n')
 
@@ -129,23 +135,28 @@ export default function ChatWidget() {
       ])
       scrollToBottom()
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Assistant temporarily unavailable.'
+      const errorMessage = getErrorMessage(error)
+      const isMissingKey = errorMessage.includes('Missing Gemini API key')
+      const isNetworkFailure =
+        errorMessage.toLowerCase().includes('failed to fetch') ||
+        errorMessage.toLowerCase().includes('networkerror')
+
       setMessages((prev) => [
         ...prev,
         {
           id: `${Date.now()}-assistant-error`,
           role: 'assistant',
-          content: errorMessage.includes('Missing Gemini API key')
+          content: isMissingKey
             ? 'Chat is not configured yet. Please add GEMINI_API_KEY in .env.local and restart the dev server.'
+            : isNetworkFailure
+              ? 'The chat server is temporarily unavailable. Please wait a few seconds and try again.'
             : 'I could not process that right now. Please call (804) 252-0967 or use the contact form for immediate help.',
         },
       ])
-      if (!errorMessage.includes('Missing Gemini API key')) {
-        console.error('Chat widget error:', {
-          error,
-          message: errorMessage,
-          lastUserMessage: trimmed,
-        })
+      if (!isMissingKey) {
+        console.error(
+          `Chat widget error: ${errorMessage} (lastUserMessage="${trimmed}")`,
+        )
       }
       scrollToBottom()
     } finally {
