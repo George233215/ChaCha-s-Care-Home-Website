@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"next dev\" \"cd studio && npm run dev\"",
-    "build": "next build && cd studio && npm run build",
+    "build": "npm --prefix studio ci --no-audit --no-fund && next build",
     "start": "next start",
     "lint": "next lint"
   },
