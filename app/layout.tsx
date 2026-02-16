@@ -8,21 +8,40 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Premium Care Home | Compassionate Senior Living',
+  metadataBase: new URL('https://chachacarehome.com'),
+  title: {
+    default: "Cha Cha's Care Home | Assisted Living in Mechanicsville, VA",
+    template: "%s | Cha Cha's Care Home",
+  },
   description:
-    'Discover our comprehensive care services offering safe, comfortable living for seniors with professional healthcare and community support.',
+    'Cha Cha\'s Care Home provides compassionate assisted living and residential care services in Mechanicsville, Virginia. We offer personalized elderly care in a warm, home-like environment.',
   keywords: [
-    'care home',
-    'senior living',
-    'assisted living',
-    'healthcare services',
-    'elderly care',
+    'assisted living Mechanicsville VA',
+    'residential care home Virginia',
+    'elderly care home',
+    'senior living Mechanicsville',
   ],
+  authors: [{ name: "Cha Cha's Care Home" }],
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    title: 'Premium Care Home | Compassionate Senior Living',
-    description: 'Safe, comfortable living for seniors with professional healthcare support.',
+    url: 'https://chachacarehome.com',
+    siteName: "Cha Cha's Care Home",
+    title: "Cha Cha's Care Home | Assisted Living in Mechanicsville, VA",
+    description:
+      'Compassionate assisted living and residential elderly care in Mechanicsville, Virginia.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Cha Cha's Care Home | Assisted Living in Mechanicsville, VA",
+    description:
+      'Compassionate assisted living and residential elderly care in Mechanicsville, Virginia.',
   },
 }
 
