@@ -11,7 +11,6 @@ import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Mail, Phone, MapPin } from 'lucide-react'
-import MapSection from '@/components/MapSection'
 
 export default function ContactPage() {
   const [loading, setLoading] = useState(false)
@@ -264,8 +263,31 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Compact Map placed at bottom for quick preview */}
-      <MapSection />
+      {/* Location highlight (map removed) */}
+      <section className="pb-16 md:pb-20 bg-gradient-to-b from-secondary/20 to-background">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-white shadow-sm">
+            <div className="absolute -top-16 -right-16 h-44 w-44 rounded-full bg-primary/10 blur-2xl" />
+            <div className="absolute -bottom-16 -left-16 h-44 w-44 rounded-full bg-accent/10 blur-2xl" />
+            <div className="relative p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div className="flex items-start gap-3">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 border border-primary/20">
+                  <MapPin className="text-primary" size={20} />
+                </span>
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-primary/80 font-semibold mb-1">Our Location</p>
+                  <h3 className="text-xl font-bold text-foreground">Mechanicsville, VA 23111</h3>
+                  <p className="text-muted-foreground">Proudly serving Richmond-area families with compassionate care.</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="inline-block h-2 w-2 rounded-full bg-accent" />
+                <span>Visits available by appointment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

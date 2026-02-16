@@ -15,7 +15,7 @@ export const metadata = {
 export const revalidate = 3600
 
 export default async function TestimonialsPage() {
-  const testimonials = await getAllTestimonials()
+  const testimonials = (await getAllTestimonials()) as any[]
 
   return (
     <div className="min-h-screen flex flex-col bg-background">

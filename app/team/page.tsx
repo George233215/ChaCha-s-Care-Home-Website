@@ -8,14 +8,14 @@ import Image from 'next/image'
 import { urlFor } from '@/lib/sanity'
 
 export const metadata = {
-  title: 'Our Team | CareCare',
+  title: 'Our Team | Cha Cha\'s Care Home',
   description: 'Meet our dedicated team of healthcare professionals committed to providing exceptional care.',
 }
 
 export const revalidate = 3600
 
 export default async function TeamPage() {
-  const teamMembers = await getAllTeamMembers()
+  const teamMembers = (await getAllTeamMembers()) as any[]
 
   return (
     <div className="min-h-screen flex flex-col bg-background">

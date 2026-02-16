@@ -31,7 +31,7 @@ export function MapSection({
           <div className="p-5 flex flex-col sm:flex-row items-center gap-4">
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-foreground">Find Us</h3>
-              <p className="text-sm text-muted-foreground">{placeName} — {destination}</p>
+              <p className="text-sm text-muted-foreground">{placeName} - {destination}</p>
             </div>
 
             <div className="flex-shrink-0 w-full sm:w-56 h-36 rounded-md overflow-hidden border">
@@ -73,3 +73,4 @@ export function MapSection({
 }
 
 export default MapSection
+

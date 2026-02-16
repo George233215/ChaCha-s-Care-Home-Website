@@ -11,9 +11,9 @@ import { notFound } from 'next/navigation'
 export const revalidate = 3600
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const resolvedParams = await Promise.resolve(params)
+  const resolvedParams = await params
   const service = await getServiceBySlug(resolvedParams.slug)
   
   return {
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function ServicePage({ params }: Props) {
-  const resolvedParams = await Promise.resolve(params)
+  const resolvedParams = await params
   const service = await getServiceBySlug(resolvedParams.slug)
 
   if (!service) {
@@ -75,7 +75,7 @@ export default async function ServicePage({ params }: Props) {
         <div className="absolute top-8 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <Button asChild variant="ghost" className="mb-4 -ml-3">
-            <Link href="/services">← Back to Services</Link>
+            <Link href="/services">{"< Back to Services"}</Link>
           </Button>
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-5 animate-fade-in-up">
             {service.title}
@@ -104,7 +104,7 @@ export default async function ServicePage({ params }: Props) {
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center text-muted-foreground">
                   <div className="text-center">
-                    <div className="text-6xl mb-2">🏥</div>
+                    <div className="text-6xl mb-2">[Image]</div>
                     <p>Service Image</p>
                   </div>
                 </div>
@@ -176,3 +176,4 @@ export default async function ServicePage({ params }: Props) {
     </div>
   )
 }
+

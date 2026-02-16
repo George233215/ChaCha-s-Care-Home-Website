@@ -149,12 +149,12 @@ export default function HeroSection({ data }: HeroSectionProps) {
             {/* Trust Indicators */}
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 stagger">
               <div className="animate-fade-in-up bg-white/8 backdrop-blur-md p-4 rounded-xl border border-white/20 hover:bg-white/12 transition-smooth">
-                <p className="text-2xl font-bold text-white">25+</p>
-                <p className="text-sm text-white/90">Years Experience</p>
+                <p className="text-2xl font-bold text-white">Experienced</p>
+                <p className="text-sm text-white/90">Professional Care Team</p>
               </div>
               <div className="animate-fade-in-up bg-white/8 backdrop-blur-md p-4 rounded-xl border border-white/20 hover:bg-white/12 transition-smooth">
-                <p className="text-2xl font-bold text-white">500+</p>
-                <p className="text-sm text-white/90">Happy Residents</p>
+                <p className="text-2xl font-bold text-white">Trusted</p>
+                <p className="text-sm text-white/90">By Local Families</p>
               </div>
               <div className="animate-fade-in-up bg-white/8 backdrop-blur-md p-4 rounded-xl border border-white/20 hover:bg-white/12 transition-smooth">
                 <p className="text-2xl font-bold text-white">24/7</p>

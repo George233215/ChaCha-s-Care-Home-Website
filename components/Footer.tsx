@@ -108,13 +108,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Optional: Trust Badge */}
-        <div className="mt-8 pt-8 border-t border-white/10 text-center">
-          <p className="text-xs text-gray-500 flex items-center justify-center gap-2">
-            <Heart className="w-4 h-4 text-primary" />
-            Made with love in Mechanicsville, Virginia
-          </p>
-        </div>
       </div>
     </footer>
   )
