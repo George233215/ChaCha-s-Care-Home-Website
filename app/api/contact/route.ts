@@ -30,7 +30,7 @@ async function sendContactEmail(params: {
   status: string
 }) {
   const resendApiKey = process.env.RESEND_API_KEY
-  const toEmail = process.env.CONTACT_TO_EMAIL || process.env.CHATBOT_EMAIL || 'chachascarehome@gmail.com'
+  const toEmail = process.env.CONTACT_TO_EMAIL || process.env.CHATBOT_EMAIL || 'Chachacare@gmail.com'
   const fromEmail = process.env.CONTACT_FROM_EMAIL
 
   if (!resendApiKey || !fromEmail) {
@@ -175,3 +175,4 @@ export async function POST(request: NextRequest) {
     )
   }
 }
+

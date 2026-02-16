@@ -25,17 +25,17 @@ export default async function BlogPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="py-16 md:py-20 bg-primary/5 border-b border-border">
+      <section className="py-14 md:py-20 bg-primary/5 border-b border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in-up">Blog & News</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl animate-slide-in-left">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in-up">Blog & News</h1>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl animate-slide-in-left">
             Senior health tips, care advice, activity highlights, and community updates from Cha Cha's Care Home.
           </p>
         </div>
       </section>
 
       {/* Blog Grid */}
-      <section className="py-16 md:py-24">
+      <section className="py-14 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {blogs && blogs.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">

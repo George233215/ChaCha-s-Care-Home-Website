@@ -23,10 +23,17 @@ export function Navigation() {
   return (
     <nav className="sticky top-0 z-50 bg-gradient-to-r from-primary to-primary/90 shadow-lg border-0 backdrop-blur supports-[backdrop-filter]:bg-primary/95">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 group" aria-label="Go to homepage">
-            <Image src="/chachas logo.png" alt="Cha Cha's Care Home" width={160} height={65} className="h-14 w-auto" priority />
+            <Image
+              src="/chachas logo.png"
+              alt="Cha Cha's Care Home"
+              width={160}
+              height={65}
+              className="h-11 md:h-14 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -63,7 +70,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden inline-flex items-center justify-center p-2 text-white hover:text-white/80 transition-smooth"
+            className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-md text-white hover:text-white/80 hover:bg-white/10 transition-smooth"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}
@@ -79,7 +86,7 @@ export function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`block px-3 py-2 rounded-md transition-smooth ${
+                className={`block px-3 py-3 rounded-md text-base transition-smooth ${
                   pathname === link.href ? 'bg-white/20 text-white' : 'text-white hover:bg-white/20'
                 }`}
                 onClick={() => setIsOpen(false)}

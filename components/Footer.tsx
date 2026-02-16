@@ -17,13 +17,13 @@ export function Footer() {
         </svg>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-12">
           {/* About Section - Enhanced */}
           <div className="lg:col-span-1">
             {/* Logo */}
             <div className="mb-6">
-              <Image src="/chachas logo.png" alt="Cha Cha's Care Home" width={180} height={70} className="h-16 w-auto" />
+              <Image src="/chachas logo.png" alt="Cha Cha's Care Home" width={180} height={70} className="h-14 md:h-16 w-auto" />
             </div>
             
             <p className="text-gray-300 leading-relaxed mb-6 text-sm">

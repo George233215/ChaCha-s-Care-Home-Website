@@ -170,9 +170,9 @@ export default function ChatWidget() {
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-[70]">
+    <div className="fixed z-[70] bottom-4 right-4 sm:bottom-5 sm:right-5 pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)]">
       {isOpen && (
-        <div className="mb-3 w-[350px] max-w-[calc(100vw-2rem)] rounded-2xl border border-primary/15 bg-white shadow-2xl overflow-hidden">
+        <div className="mb-3 w-[min(350px,calc(100vw-1.5rem))] sm:w-[350px] rounded-2xl border border-primary/15 bg-white shadow-2xl overflow-hidden animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-2 duration-300">
           <div className="bg-gradient-to-r from-primary to-primary/90 text-white px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Bot className="h-5 w-5" />
@@ -191,7 +191,7 @@ export default function ChatWidget() {
             </button>
           </div>
 
-          <div ref={listRef} className="h-[360px] overflow-y-auto p-3 bg-gradient-to-b from-secondary/20 to-white">
+          <div ref={listRef} className="h-[55vh] max-h-[360px] overflow-y-auto p-3 bg-gradient-to-b from-secondary/20 to-white">
             <div className="space-y-3">
               {!hasUserMessage && (
                 <div className="space-y-2">
@@ -259,7 +259,7 @@ export default function ChatWidget() {
         aria-label={isOpen ? 'Close assistant chat' : 'Open assistant chat'}
       >
         <MessageCircle className="h-5 w-5" />
-        <span className="text-sm font-semibold">{isOpen ? 'Close Chat' : 'Ask a Question'}</span>
+        <span className="hidden sm:inline text-sm font-semibold">{isOpen ? 'Close Chat' : 'Ask a Question'}</span>
       </button>
     </div>
   )

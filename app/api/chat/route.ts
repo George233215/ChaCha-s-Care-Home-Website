@@ -21,7 +21,7 @@ function firstNonEmpty(values: Array<string | undefined>) {
 function getPublicBusinessContext(serviceTitles: string[]) {
   const businessName = process.env.CHATBOT_BUSINESS_NAME || "Cha Cha's Care Home"
   const phone = process.env.CHATBOT_PHONE || '(804) 252-0967'
-  const email = process.env.CHATBOT_EMAIL || 'chachascarehome@gmail.com'
+  const email = process.env.CHATBOT_EMAIL || 'Chachacare@gmail.com'
   const location = process.env.CHATBOT_LOCATION || 'Mechanicsville, VA 23111'
   const bookingUrl = process.env.CHATBOT_BOOKING_URL || '/contact'
 
@@ -223,3 +223,4 @@ export async function POST(request: NextRequest) {
     )
   }
 }
+

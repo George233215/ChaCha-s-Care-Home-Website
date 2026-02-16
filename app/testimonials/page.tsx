@@ -23,22 +23,22 @@ export default async function TestimonialsPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="py-16 md:py-20 bg-primary/5 border-b border-border">
+      <section className="py-14 md:py-20 bg-primary/5 border-b border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in-up">Testimonials</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl animate-slide-in-left">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 animate-fade-in-up">Testimonials</h1>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl animate-slide-in-left">
             Hear directly from our residents and their families about their experience with Cha Cha's Care Home and the compassionate support they've received.
           </p>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 md:py-24">
+      <section className="py-14 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {testimonials && testimonials.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 stagger">
               {testimonials.map((testimonial) => (
-                <Card key={testimonial._id} className="p-8 hover:shadow-lg transition-smooth-slow hover:scale-105 animate-scale-in">
+                <Card key={testimonial._id} className="p-6 md:p-8 hover:shadow-lg transition-smooth-slow hover:scale-105 animate-scale-in">
                   {/* Rating */}
                   {testimonial.rating && (
                     <div className="flex gap-1 mb-4">
@@ -53,7 +53,7 @@ export default async function TestimonialsPage() {
                   )}
 
                   {/* Testimonial Text */}
-                  <p className="text-foreground text-lg mb-6 italic leading-relaxed">
+                  <p className="text-foreground text-base md:text-lg mb-6 italic leading-relaxed">
                     {`"${testimonial.testimonial}"`}
                   </p>
 

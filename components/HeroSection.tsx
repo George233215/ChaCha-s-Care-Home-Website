@@ -100,25 +100,25 @@ export default function HeroSection({ data }: HeroSectionProps) {
 
   return (
     <section
-      className="relative min-h-[75vh] md:min-h-[85vh] pt-10 md:pt-16 flex items-center overflow-hidden bg-cover bg-center transition-all duration-1000"
+      className="relative min-h-[68vh] md:min-h-[85vh] pt-8 md:pt-16 flex items-center overflow-hidden bg-cover bg-center transition-all duration-1000"
       style={{ backgroundImage: `url('${backgroundImageUrl}')` }}
     >
       {/* Dark overlay so text remains readable over the photo */}
       <div className="absolute inset-0 bg-black/50" />
       <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-primary/40 to-transparent" />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-white/6 rounded-full blur-3xl animate-float-y" />
-        <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 w-96 h-96 bg-white/8 rounded-full blur-3xl animate-float-y" />
-        <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-56 h-56 md:w-96 md:h-96 bg-white/6 rounded-full blur-3xl animate-float-y" />
+        <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 w-56 h-56 md:w-96 md:h-96 bg-white/8 rounded-full blur-3xl animate-float-y" />
+        <div className="absolute top-1/2 right-1/4 w-44 h-44 md:w-80 md:h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-slow" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left Column */}
           <div className="animate-fade-in-up">
             <div className="space-y-2">
               <h1
-                className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-0 text-balance drop-shadow-lg ${
+                className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-0 text-balance drop-shadow-lg ${
                   headingVisible ? 'animate-fade-in' : 'animate-fade-out'
                 }`}
                 aria-live="polite"
@@ -127,27 +127,27 @@ export default function HeroSection({ data }: HeroSectionProps) {
               </h1>
             </div>
             <p
-              className="text-lg md:text-xl text-white/95 mb-8 leading-relaxed text-balance drop-shadow"
+              className="text-base sm:text-lg md:text-xl text-white/95 mb-6 md:mb-8 leading-relaxed text-balance drop-shadow"
               style={{ animationDelay: '100ms' }}
             >
               {heroData.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4" style={{ animationDelay: '200ms' }}>
-              <Button asChild size="lg" className="transition-smooth bg-white text-primary">
+              <Button asChild size="lg" className="w-full sm:w-auto transition-smooth bg-white text-primary">
                 <Link href={heroData.ctaLink}>{heroData.ctaText}</Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="transition-smooth bg-white/20 text-white border-white/50"
+                className="w-full sm:w-auto transition-smooth bg-white/20 text-white border-white/50"
               >
                 <Link href="/services">Explore Services</Link>
               </Button>
             </div>
 
             {/* Trust Indicators */}
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 stagger">
+            <div className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 stagger">
               <div className="animate-fade-in-up bg-white/8 backdrop-blur-md p-4 rounded-xl border border-white/20 hover:bg-white/12 transition-smooth">
                 <p className="text-2xl font-bold text-white">Experienced</p>
                 <p className="text-sm text-white/90">Professional Care Team</p>
@@ -164,7 +164,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
           </div>
 
           {/* Right Column - Hero Carousel Images */}
-          <div className="relative w-full aspect-[4/5] max-h-[500px] rounded-2xl overflow-hidden border border-white/20 shadow-2xl animate-slide-in-right">
+          <div className="relative w-full aspect-[16/10] md:aspect-[4/5] max-h-[340px] md:max-h-[500px] rounded-2xl overflow-hidden border border-white/20 shadow-2xl animate-slide-in-right">
             {currentRightImage?.image ? (
               <Image
                 key={currentImageIndex}

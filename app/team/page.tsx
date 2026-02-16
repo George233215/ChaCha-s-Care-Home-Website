@@ -23,20 +23,20 @@ export default async function TeamPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="py-16 md:py-20 bg-primary/5 border-b border-border">
+      <section className="py-14 md:py-20 bg-primary/5 border-b border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Our Team</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">Our Team</h1>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl">
             Meet the dedicated professionals who provide exceptional care and support to our residents.
           </p>
         </div>
       </section>
 
       {/* Team Grid */}
-      <section className="py-16 md:py-24">
+      <section className="py-14 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {teamMembers && teamMembers.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {teamMembers.map((member) => (
                 <Card key={member._id} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <div className="relative h-64 bg-secondary flex items-center justify-center text-muted-foreground overflow-hidden">

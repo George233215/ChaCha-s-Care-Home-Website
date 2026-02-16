@@ -23,36 +23,36 @@ export default async function GalleryPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-primary/10 to-primary/5 border-b border-border relative overflow-hidden">
-        <div className="absolute top-8 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+      <section className="py-14 md:py-24 bg-gradient-to-b from-primary/10 to-primary/5 border-b border-border relative overflow-hidden">
+        <div className="absolute top-8 right-0 w-56 h-56 md:w-72 md:h-72 bg-primary/10 rounded-full blur-3xl" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-white border border-primary/20 shadow-sm">
+          <div className="inline-flex max-w-full flex-wrap items-center gap-2 mb-4 px-4 py-2 rounded-full bg-white border border-primary/20 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-accent" />
             <span className="text-sm font-semibold text-primary">Life At Cha Cha's</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-5 animate-fade-in-up">Gallery</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed animate-slide-in-left">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 animate-fade-in-up">Gallery</h1>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed animate-slide-in-left">
             Take a visual tour of Cha Cha's Care Home, including our comfortable living spaces, dining areas, common rooms, and the activities our residents enjoy.
           </p>
         </div>
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-secondary/20">
+      <section className="py-14 md:py-24 bg-gradient-to-b from-background to-secondary/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {galleries && galleries.length > 0 ? (
-            <div className="space-y-12">
+            <div className="space-y-10 md:space-y-12">
               {galleries.map((gallery) => (
-                <div key={gallery._id} className="animate-fade-in-up bg-white rounded-2xl border border-primary/10 p-6 md:p-8 shadow-sm">
-                  <h2 className="text-2xl font-bold text-foreground mb-3 leading-tight">{gallery.title}</h2>
+                <div key={gallery._id} className="animate-fade-in-up bg-white rounded-2xl border border-primary/10 p-5 md:p-8 shadow-sm">
+                  <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-3 leading-tight">{gallery.title}</h2>
                   {gallery.description && <p className="text-muted-foreground mb-6 leading-relaxed">{gallery.description}</p>}
-                  <div className="mb-8">
+                  <div className="mb-6 md:mb-8">
                     <div className="h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
                   </div>
 
                   {/* Carousel Section */}
                   {gallery.images && gallery.images.length > 0 && (
-                    <div className="mb-10">
+                    <div className="mb-8 md:mb-10">
                       <ImageCarousel
                         images={gallery.images}
                         autoSlide={true}
@@ -65,14 +65,14 @@ export default async function GalleryPage() {
                   {/* Grid View */}
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-5">All Photos</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 stagger">
                       {gallery.images && gallery.images.length > 0 ? (
                         gallery.images.map((item, idx) => {
                           const imageUrl = item.image ? urlFor(item.image).url() : null
                           return (
                             <Card
                               key={idx}
-                              className="overflow-hidden h-64 bg-secondary hover:shadow-lg transition-smooth-slow hover:scale-[1.01] cursor-pointer animate-scale-in relative group"
+                              className="overflow-hidden h-56 sm:h-64 bg-secondary hover:shadow-lg transition-smooth-slow hover:scale-[1.01] cursor-pointer animate-scale-in relative group"
                             >
                               {imageUrl ? (
                                 <>
@@ -105,7 +105,7 @@ export default async function GalleryPage() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12 border border-primary/10 bg-white rounded-2xl shadow-sm max-w-2xl mx-auto px-6">
+            <div className="text-center py-10 md:py-12 border border-primary/10 bg-white rounded-2xl shadow-sm max-w-2xl mx-auto px-5 md:px-6">
               <p className="text-foreground font-semibold mb-2">New photos are being added.</p>
               <p className="text-muted-foreground">Contact us to schedule a visit and see the home in person.</p>
             </div>
